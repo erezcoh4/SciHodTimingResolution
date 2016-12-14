@@ -7,7 +7,7 @@ import seaborn as sns
 
 
 data = pd.read_csv("csv_data/best_measurements.csv")
-H_5_100 , H_5_161 , H_8_100 , H_8_161 = np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6))
+H_5_100 , H_5_161 , H_8_100 , H_8_161 , H_4_100  = np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6))
 
 print data
 
@@ -20,7 +20,7 @@ SiPM        = data['SiPMs']
 threshold   = data['cfd-threshold [mV]']
 
 def plot_heatmap( i , H , xticklabels , yticklabels , title ):
-    plt.subplot(2,2,i)
+    plt.subplot(2,3,i)
     fig.subplots_adjust(left=0.08)
     fig.subplots_adjust(bottom=0.11)
     fig.subplots_adjust(top=0.94)
@@ -62,6 +62,8 @@ for i in range(len(data)):
         SiPM_type = 2
     elif SiPM[i]=='AdvanSiD':
         SiPM_type = 3
+    elif SiPM[i]=='S13360-3075PE':
+        SiPM_type = 1
 
     print scintillator_type , SiPM_type , t , " ps"
 
@@ -73,6 +75,8 @@ for i in range(len(data)):
         H_8_100 [SiPM_type , scintillator_type  ] = t
     if width[i]==8 and length[i]==161.5:
         H_8_161 [ SiPM_type , scintillator_type ] = t
+    if width[i]==4 and length[i]==100:
+        H_4_100 [ SiPM_type , scintillator_type ] = t
 
 
 
@@ -80,57 +84,47 @@ H_5_100 [ H_5_100[:,:] == 0 ] = 'NAN'
 H_5_161 [ H_5_161[:,:] == 0 ] = 'NAN'
 H_8_100 [ H_8_100[:,:] == 0 ] = 'NAN'
 H_8_161 [ H_8_161[:,:] == 0 ] = 'NAN'
+H_4_100 [ H_4_100[:,:] == 0 ] = 'NAN'
 
 sns.set(font_scale=1.5)
 sns.set_style({"font.family":[u"serif"]})
 
-fig = plt.figure()
+fig = plt.figure(figsize=(15,10))
+
 plot_heatmap( 1 ,
+             H_4_100,
+             xticklabels=['BC404','','','BC422','',''],
+             yticklabels=['S13360-\n3050PE','S13360-\n3075PE','','AdvanSiD'],
+             title = '4 mm wide, 100 mm long')
+
+plot_heatmap( 2 ,
              H_5_100,
              xticklabels=['EJ204','EJ204 coated','BC420','BC422','BC422 \n 12'+r'$\mu$'+'m Air','BC422 \n6'+r'$\mu$'+'m Air\n6'+r'$\mu$'+'m AlBoPET'],
              yticklabels=['S13360-\n3050PE','S13360-\n3025PE','S12572-\n025P','AdvanSiD'],
              title = '5 mm wide, 100 mm long')
 
-plot_heatmap( 2 ,
+plot_heatmap( 3 ,
              H_8_100,
              xticklabels=['','','','BC422','',''],
              yticklabels=['S13360-\n3050PE','S13360-\n3025PE','S12572-\n025P','AdvanSiD'],
              title = '8 mm wide, 100 mm long')
 
-plot_heatmap( 3 ,
+plot_heatmap( 5 ,
              H_5_161,
              xticklabels=['BC404','BC418','BC420','BC422','',''],
              yticklabels=['S13360-\n3050PE','S13360-\n3025PE','S12572-\n025P','AdvanSiD'],
              title = '5 mm wide, 161.5 mm long')
 
-plot_heatmap( 4 ,
+plot_heatmap( 6 ,
              H_8_161,
              xticklabels=['BC404','BC418','BC420','BC422','',''],
              yticklabels=['S13360-\n3050PE','S13360-\n3025PE','S12572-\n025P','AdvanSiD'],
              title = '8 mm wide, 161.5 mm long')
 
 
-#plt.yticks(rotation=0)
-#plt.subplot(1,2,2)
-#fig.subplots_adjust(left=0.08)
-#fig.subplots_adjust(bottom=0.11)
-#fig.subplots_adjust(top=0.94)
-#fig.subplots_adjust(right=0.99 , wspace=0.05)
-#
-#
-#heatmap_8 = sns.heatmap(H_8,annot=True,fmt=".0f"
-#            ,xticklabels=['','','','BC422']
-#            ,yticklabels=['','','','','','']
-#            ,linewidths=1.,cbar=False)
-#plt.yticks(rotation=0)
-#heatmap_8.set_title('8 mm wide')
-
 plt.show()
 
-#file_name = "timing_resolution_heatmap"
-#save_path = "/Users/erezcohen/Desktop/timing_resolution_heatmap.pdf"
-
-plt.savefig("/Users/erezcohen/Desktop/timing_resolution_heatmap.pdf")
+fig.savefig("/Users/erezcohen/Desktop/timing_resolution_heatmap.pdf")
 
 
 
