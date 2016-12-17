@@ -7,8 +7,8 @@ import seaborn as sns
 
 
 data = pd.read_csv("csv_data/best_measurements.csv")
-H_5_100 , H_5_161 , H_8_100 , H_8_161 , H_4_100 , H_4_161   = np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6))
-#H_4_100 , H_4_161 , H_5_100 , H_5_161 , H_8_100 , H_8_161  = np.zeros((4,2)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,4)) , np.zeros((4,4))
+#H_5_100 , H_5_161 , H_8_100 , H_8_161 , H_4_100 , H_4_161   = np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6))
+H_4_100 , H_4_161 , H_5_100 , H_5_161 , H_8_100 , H_8_161  = np.zeros((4,2)) , np.zeros((4,1)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,4)) , np.zeros((4,4))
 
 #print data
 
