@@ -7,8 +7,8 @@ import seaborn as sns
 
 
 data = pd.read_csv("csv_data/best_measurements.csv")
-#H_5_100 , H_5_161 , H_8_100 , H_8_161 , H_4_100 , H_4_161   = np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6))
-H_4_100 , H_4_161 , H_5_100 , H_5_161 , H_8_100 , H_8_161  = np.zeros((4,2)) , np.zeros((4,1)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,4)) , np.zeros((4,4))
+H_5_100 , H_5_161 , H_8_100 , H_8_161 , H_4_100 , H_4_161   = np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,6))
+#H_4_100 , H_4_161 , H_5_100 , H_5_161 , H_8_100 , H_8_161  = np.zeros((4,2)) , np.zeros((4,1)) , np.zeros((4,6)) , np.zeros((4,6)) , np.zeros((4,4)) , np.zeros((4,4))
 
 #print data
 
@@ -94,7 +94,7 @@ fig = plt.figure(figsize=(15,10))
 
 plot_heatmap( 1 ,
              H_4_100,
-             xticklabels=['BC404','BC422',],
+             xticklabels=['BC404','','BC422',''],
              yticklabels=['S13360-\n3050PE','S13360-\n3075PE','','AdvanSiD'],
              title = '4 mm wide, 100 mm long')
 
@@ -106,14 +106,14 @@ plot_heatmap( 2 ,
 
 plot_heatmap( 3 ,
              H_8_100,
-             xticklabels=['','','','BC422','',''],
+             xticklabels=['BC404','','','BC422','',''],
              yticklabels=['S13360-\n3050PE','S13360-\n3025PE','S12572-\n025P','AdvanSiD'],
              title = '8 mm wide, 100 mm long')
 fig.subplots_adjust(left=0.08 ,bottom=0.11 , top=0.94 , right=0.99 , wspace=0.05)
 
 plot_heatmap( 4 ,
              H_4_161,
-             xticklabels=['BC404','BC422',],
+             xticklabels=['BC404','','BC422',''],
              yticklabels=['S13360-\n3050PE','S13360-\n3075PE','','AdvanSiD'],
              title = '4 mm wide, 161.5 mm long')
 fig.subplots_adjust(left=0.08 ,bottom=0.11 , top=0.94 , right=0.99 , wspace=0.05)
