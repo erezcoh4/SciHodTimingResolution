@@ -40,7 +40,7 @@ for i in range(len(data)):
     elif sci[i]=='BC420':
         scintillator_type = 2
     elif sci[i]=='BC422':
-        scintillator_type = 1
+        scintillator_type = 3
     elif sci[i]=='BC422 12um AirGap':
         scintillator_type = 4
     elif sci[i]=='BC422 6um Air,6um Al-Milar':
@@ -48,7 +48,7 @@ for i in range(len(data)):
     elif sci[i]=='BC404':
         scintillator_type = 0
     elif sci[i]=='BC418':
-        scintillator_type = 3
+        scintillator_type = 1
 
 
 
@@ -87,14 +87,14 @@ H_8_161 [ H_8_161[:,:] == 0 ] = 'NAN'
 H_4_100 [ H_4_100[:,:] == 0 ] = 'NAN'
 H_4_161 [ H_4_161[:,:] == 0 ] = 'NAN'
 
-sns.set(font_scale=1.0) #1.5
+sns.set(font_scale=1.5) #1.5
 sns.set_style({"font.family":[u"serif"]})
 
 fig = plt.figure(figsize=(15,10))
 
 plot_heatmap( 1 ,
              H_4_100,
-             xticklabels=['BC404','','BC422',''],
+             xticklabels=['BC404','','','BC422',''],
              yticklabels=['S13360-\n3050PE','S13360-\n3075PE','','AdvanSiD'],
              title = '4 mm wide, 100 mm long')
 
@@ -113,7 +113,7 @@ fig.subplots_adjust(left=0.08 ,bottom=0.11 , top=0.94 , right=0.99 , wspace=0.05
 
 plot_heatmap( 4 ,
              H_4_161,
-             xticklabels=['BC404','','BC422',''],
+             xticklabels=['BC404','','','',''],
              yticklabels=['S13360-\n3050PE','S13360-\n3075PE','','AdvanSiD'],
              title = '4 mm wide, 161.5 mm long')
 fig.subplots_adjust(left=0.08 ,bottom=0.11 , top=0.94 , right=0.99 , wspace=0.05)
