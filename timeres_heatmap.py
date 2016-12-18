@@ -36,7 +36,7 @@ for i in range(len(data)):
     if sci[i]=='EJ204':
         scintillator_type = 0
     elif sci[i]=='EJ204 coated':
-        scintillator_type = 3
+        scintillator_type = 1
     elif sci[i]=='BC420':
         scintillator_type = 2
     elif sci[i]=='BC422':
